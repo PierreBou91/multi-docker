@@ -9,10 +9,10 @@ script:
   - docker run -e CI=true pierremilvue/react-test npm test
 
 after_success:
-  - docker built -t pierremilvue/multi-client ./client
-  - docker built -t pierremilvue/multi-nginx ./nginx
-  - docker built -t pierremilvue/multi-server ./server
-  - docker built -t pierremilvue/multi-worker ./worker
+  - docker build -t pierremilvue/multi-client ./client
+  - docker build -t pierremilvue/multi-nginx ./nginx
+  - docker build -t pierremilvue/multi-server ./server
+  - docker build -t pierremilvue/multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push pierremilvue/multi-client
   - docker push pierremilvue/multi-nginx
